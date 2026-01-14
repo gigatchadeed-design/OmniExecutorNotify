@@ -1,0 +1,84 @@
+ -- Design Pro Minimaliste (Gris Anthracite & Blanc)
+local function CreateProNotify(titleText, descText)
+    local CoreGui = game:GetService("CoreGui")
+    
+    local sg = Instance.new("ScreenGui")
+    sg.Name = "OmniProNotify"
+    sg.Parent = CoreGui
+
+    -- Main Frame (L'intérieur est Gris Foncé)
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Name = "MainFrame"
+    MainFrame.Parent = sg
+    MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- Gris Anthracite
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0)
+    MainFrame.Position = UDim2.new(0.5, 0, 0, -80)
+    MainFrame.Size = UDim2.new(0, 200, 0, 60)
+    MainFrame.BorderSizePixel = 0
+    
+    local UICorner = Instance.new("UICorner")
+    UICorner.CornerRadius = UDim.new(0, 8)
+    UICorner.Parent = MainFrame
+
+    -- Bordure fine pour le relief
+    local UIStroke = Instance.new("UIStroke")
+    UIStroke.Color = Color3.fromRGB(50, 50, 50) -- Gris légèrement plus clair
+    UIStroke.Thickness = 1
+    UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    UIStroke.Parent = MainFrame
+
+    -- Titre (Blanc Pur)
+    local Title = Instance.new("TextLabel")
+    Title.Parent = MainFrame
+    Title.BackgroundTransparency = 1
+    Title.Position = UDim2.new(0, 15, 0.2, 0)
+    Title.Size = UDim2.new(0, 200, 0, 20)
+    Title.Font = Enum.Font.GothamMedium
+    Title.Text = titleText:upper() -- En majuscules pour le style pro
+    Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title.TextSize = 14
+    Title.TextXAlignment = Enum.TextXAlignment.Left
+
+    -- Description (Gris de texte)
+    local Desc = Instance.new("TextLabel")
+    Desc.Parent = MainFrame
+    Desc.BackgroundTransparency = 1
+    Desc.Position = UDim2.new(0, 15, 0.55, 0)
+    Desc.Size = UDim2.new(0, 200, 0, 20)
+    Desc.Font = Enum.Font.Gotham
+    Desc.Text = descText
+    Desc.TextColor3 = Color3.fromRGB(180, 180, 180)
+    Desc.TextSize = 12
+    Desc.TextXAlignment = Enum.TextXAlignment.Left
+
+    -- Barre de chargement d'expiration (le petit détail pro)
+    local TimerBarContainer = Instance.new("Frame")
+    TimerBarContainer.Parent = MainFrame
+    TimerBarContainer.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    TimerBarContainer.BorderSizePixel = 0
+    TimerBarContainer.Position = UDim2.new(0, 0, 1, -3)
+    TimerBarContainer.Size = UDim2.new(1, 0, 0, 3)
+
+    local TimerBar = Instance.new("Frame")
+    TimerBar.Parent = TimerBarContainer
+    TimerBar.BackgroundColor3 = Color3.fromRGB(200, 200, 200) -- Barre grise claire/blanche
+    TimerBar.BorderSizePixel = 0
+    TimerBar.Size = UDim2.new(1, 0, 1, 0)
+
+    -- Animation d'entrée fluide
+    MainFrame:TweenPosition(UDim2.new(0.5, 0, 0, 30), "Out", "Quart", 0.6, true)
+
+    -- Animation de la barre (Timer)
+    TimerBar:TweenSize(UDim2.new(0, 0, 1, 0), "Out", "Linear", 4, true)
+
+    task.wait(4)
+
+    -- Animation de sortie
+    MainFrame:TweenPosition(UDim2.new(0.5, 0, 0, -80), "In", "Quart", 0.6, true)
+    
+    task.wait(0.6)
+    sg:Destroy()
+end
+
+-- Appel du script
+CreateProNotify("Omni Executor", "API Attached Successfully")
