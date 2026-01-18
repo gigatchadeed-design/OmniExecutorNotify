@@ -1,4 +1,4 @@
--- Design Pro Minimaliste (Sombre & Indigo)
+
 local function CreateProNotify(titleText, descText)
     local CoreGui = game:GetService("CoreGui")
     
@@ -6,7 +6,7 @@ local function CreateProNotify(titleText, descText)
     sg.Name = "OmniNotify"
     sg.Parent = CoreGui
 
-    -- Main Frame (Fond Noir 15, 15, 15)
+
     local MainFrame = Instance.new("Frame")
     MainFrame.Name = "MainFrame"
     MainFrame.Parent = sg
@@ -20,7 +20,7 @@ local function CreateProNotify(titleText, descText)
     UICorner.CornerRadius = UDim.new(0, 6)
     UICorner.Parent = MainFrame
 
-    -- Bordure fine (Utilise la couleur secondaire 130, 135, 179 avec transparence)
+
     local UIStroke = Instance.new("UIStroke")
     UIStroke.Color = Color3.fromRGB(130, 135, 179) 
     UIStroke.Thickness = 2
@@ -28,7 +28,7 @@ local function CreateProNotify(titleText, descText)
     UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     UIStroke.Parent = MainFrame
 
-    -- Titre (Blanc Pur)
+    
     local Title = Instance.new("TextLabel")
     Title.Parent = MainFrame
     Title.BackgroundTransparency = 1
@@ -40,7 +40,7 @@ local function CreateProNotify(titleText, descText)
     Title.TextSize = 13
     Title.TextXAlignment = Enum.TextXAlignment.Left
 
-    -- Description (Gris clair pour lisibilité)
+ 
     local Desc = Instance.new("TextLabel")
     Desc.Parent = MainFrame
     Desc.BackgroundTransparency = 1
@@ -54,14 +54,14 @@ local function CreateProNotify(titleText, descText)
 
 
 
-    -- Animation d'entrée fluide
+
     MainFrame:TweenPosition(UDim2.new(0.5, 0, 0, 35), "Out", "Quart", 0.6, true)
 
 
 
     task.wait(4)
 
-    -- Animation de sortie
+
     MainFrame:TweenPosition(UDim2.new(0.5, 0, 0, -80), "In", "Quart", 0.6, true)
     
     task.wait(0.6)
